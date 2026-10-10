@@ -1,4 +1,4 @@
-package com.example.week3
+package com.example.week3.soal1
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -39,6 +39,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.remember
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import kotlin.random.Random
 import kotlinx.coroutines.delay
@@ -70,7 +71,7 @@ enum class state() {
     FAILED
 }
 
-enum class reaction(val title: String, val icon: androidx.compose.ui.graphics.vector.ImageVector, val color: Color){
+enum class reaction(val title: String, val icon: ImageVector, val color: Color){
     FAST("DANG YOU'RE SO FAST", Icons.Default.SelfImprovement, color = Color.Green),
     GOOD("YOUR REFLEX IS SO GOOD", Icons.Default.ThumbUp, color = Color.Blue),
     NORMAL("MEH LIKE OTHER PERSON", Icons.Default.PanTool, color = Color.Yellow),
