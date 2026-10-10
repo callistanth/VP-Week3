@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -40,7 +41,9 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import com.example.week3.R
 import kotlin.random.Random
 import kotlinx.coroutines.delay
 
@@ -71,11 +74,11 @@ enum class state() {
     FAILED
 }
 
-enum class reaction(val title: String, val icon: ImageVector, val color: Color){
-    FAST("DANG YOU'RE SO FAST", Icons.Default.SelfImprovement, color = Color.Green),
-    GOOD("YOUR REFLEX IS SO GOOD", Icons.Default.ThumbUp, color = Color.Blue),
-    NORMAL("MEH LIKE OTHER PERSON", Icons.Default.PanTool, color = Color.Yellow),
-    SLOW("YOU'RE LIKE A SNAIL", Icons.Default.ThumbDown, color = Color.Red)
+enum class reaction(val title: String, val imgRes: Int, val color: Color){
+    FAST("DANG YOU'RE SO FAST", R.drawable.fast, color = Color.Green),
+    GOOD("YOUR REFLEX IS SO GOOD", R.drawable.good, color = Color.Blue),
+    NORMAL("MEH LIKE OTHER PERSON",R.drawable.meh, color = Color.Yellow),
+    SLOW("YOU'RE LIKE A SNAIL", R.drawable.snail, color = Color.Red)
 }
 
 fun catergory(avgTime: Long): reaction{
@@ -452,13 +455,12 @@ fun Greeting(modifier: Modifier = Modifier) {
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.padding(bottom = 35.dp)
                     )
-                    Icon(
-                        categories.icon,
-                        contentDescription = "Check",
-                        tint = Color.White,
+                    Image(
+                        painter = painterResource(id = categories.imgRes),
+                        contentDescription = "Reaction Image",
                         modifier = Modifier
-                            .size(200.dp)
-                            .padding(bottom = 30.dp)
+                            .size(180.dp)
+                            .padding(bottom = 20.dp)
                     )
                     Text(
                         text = if (avg != null) {
